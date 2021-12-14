@@ -1,18 +1,7 @@
 import day3 
 
 def test_day3a():
-    report = ["00100",
-"11110",
-"10110",
-"10111",
-"10101",
-"01111",
-"00111",
-"11100",
-"10000",
-"11001",
-"00010",
-"01010"]
+    report = day3.read_day3("../aoc-input/day3_test_intput.txt")
     
     gamma_bin = "10110"
     gamma_dec = 22
