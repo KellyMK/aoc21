@@ -13,19 +13,18 @@ def read_day3(path):
     # Remove all NaN values 
     df.dropna(how='all', axis=1, inplace=True)
     
-    return df.astype(int)
+    return df
 
 def day3(path):
     
     df = read_day3(path)
     
-    gamma = df.mode()
+    gamma = ''.join(df.mode().values.tolist()[0])
+    gamma_int = int(gamma)
+    gamma_dec = int(gamma, base=2)
     
-    gamma['X'] = 'A'
-    
-    print(df.groupby('X').agg({
-    'name': lambda x: ''.join(x)
-}))
+    print(gamma_int)
+    print(gamma_dec)
     
 
 
