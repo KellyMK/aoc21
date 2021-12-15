@@ -15,9 +15,25 @@ def read_day3(path):
     
     return df
 
-def day3(path):
+def least_common(x, rank=-1):
+    """[summary]
+
+    Args:
+        x (data frame column): input DF column
+        rank (int, optional): Rank, where 0 = most frequent, -1 = least frequent, 
+        and other integers represent the rank. Defaults to -1.
+    """
     
-    df = read_day3(path)
+    cnts = x.value_counts()
+    
+    return cnts.index[rank]
+    
+    
+
+def calc_nums(df):
+    
+    print('df')
+    print(df)
     
     gamma = ''.join(df.mode().values.tolist()[0])
     gamma_int = int(gamma)
@@ -26,6 +42,20 @@ def day3(path):
     print(gamma_int)
     print(gamma_dec)
     
+    epsilon = ''.join(df.agg([least_common]).values.tolist()[0])
+    epsilon_int = int(epsilon)
+    epsilon_dec = int(epsilon, base=2)
+    
+    print(epsilon_int)
+    print(epsilon_dec)
+    
+    return gamma_dec * epsilon_dec
 
 
-day3("aoc-input/day3_test_input.txt")
+def day3a(path):
+    df = read_day3(path)
+    
+    return calc_nums(df)
+
+
+day3a("test/day3_test_input.txt")
